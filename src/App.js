@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import axios from 'axios'
 
 import Navbar from './components/Navbar'
@@ -28,17 +28,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-      <Navbar />
+        <Navbar />
 
-      <div className="container">
-        <div className="row">
-          <Switch>
-            <Route exact path="/countries" render={() => <CountriesList countries={this.state.countries} />} />
-            <Route exact path="/countries/:alpha3Code" component={CountryDetails} />
-          </Switch>
+        <div className="container">
+          <div className="row">
+            <Routes>
+              <Route path="/countries" element={<CountriesList countries={this.state.countries} />} />
+              <Route path="/countries/:alpha3Code" element={<CountryDetails />} />
+            </Routes>
+          </div>
         </div>
       </div>
-    </div>
     )
   }
 }
